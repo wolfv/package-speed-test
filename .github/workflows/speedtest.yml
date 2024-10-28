@@ -11,12 +11,15 @@ jobs:
     - run: |
         bash <(curl -L micro.mamba.pm/install.sh)
 
+    - run:
+        micromamba info
+
     - name: Install dependencies from Anaconda
       run: |
-        export ROOT_PREFIX=/home/runner/test_anaconda
+        export MAMBA_ROOT_PREFIX=/home/runner/test_anaconda
         micromamba create -n test_anaconda -f anaconda.yml
 
     - name: Install dependencies from prefix.dev
       run: |
-        export ROOT_PREFIX=/home/runner/test_prefix
+        export MAMBA_ROOT_PREFIX=/home/runner/test_prefix
         micromamba create -n test_prefix -f prefix.yml

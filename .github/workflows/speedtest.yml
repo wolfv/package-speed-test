@@ -18,9 +18,9 @@ jobs:
       - name: Install dependencies from Anaconda
         run: |
           export MAMBA_ROOT_PREFIX=/home/runner/test_anaconda
-          micromamba create -n test_anaconda -f anaconda.yml
+          micromamba create -n test_anaconda -f anaconda.yml -v 
 
       - name: Install dependencies from prefix.dev
         run: |
           export MAMBA_ROOT_PREFIX=/home/runner/test_prefix
-          micromamba create -n test_prefix -f prefix.yml
+          micromamba create -n test_prefix -f prefix.yml -v 

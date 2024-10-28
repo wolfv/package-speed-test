@@ -1,0 +1,22 @@
+name: Speed test
+
+on: [push]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: |
+        bash <(curl -L micro.mamba.pm/install.sh)
+
+    - name: Install dependencies from Anaconda
+      run: |
+        export ROOT_PREFIX=/home/runner/test_anaconda
+        micromamba create -n test_anaconda -f anaconda.yml
+
+    - name: Install dependencies from prefix.dev
+      run: |
+        export ROOT_PREFIX=/home/runner/test_prefix
+        micromamba create -n test_prefix -f prefix.yml
